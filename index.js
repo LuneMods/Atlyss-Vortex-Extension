@@ -5,7 +5,7 @@ const { util, log } = require('vortex-api');
 // Game-specific constants
 const GAME_ID = 'atlyss';
 const STEAMAPP_ID = '2768430';
-const MOD_FILE_EXT = ""; // Modify if ATLYSS mods use a different file extension
+const MOD_FILE_EXT = ""; //Blank as BepInEx can use a variety of files to load textures, models or animations
 
 /**
  * Main entry point for the extension
@@ -33,7 +33,7 @@ function main(context) {
         },
     });
 
-    // Register the mod installer for .pak files
+    // Register the mod installer
     context.registerInstaller('atlyss-mod', 25, testSupportedContent, installContent);
 
     log('ATLYSS extension loaded successfully.');
@@ -97,7 +97,6 @@ function testSupportedContent(files, gameId) {
 }
 
 function installContent(files) {
-    // The .pak file is expected to always be positioned in the mods directory we're going to disregard anything placed outside the root.
     const modFile = files.find(file => path.extname(file).toLowerCase() === MOD_FILE_EXT);
     const idx = modFile.indexOf(path.basename(modFile));
     const rootPath = path.dirname(modFile);
