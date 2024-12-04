@@ -1,0 +1,6 @@
+{
+  "name": "ATLYSS",
+  "author": "Lunemods",
+  "version": "0.1.0",
+  "description": "Support for ATLYSS using BepInEx & MelonLoader"
+}
